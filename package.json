@@ -1,7 +1,6 @@
 {
-  "name": "websocket-ex",
+  "name": "node-websocket-note",
   "version": "1.0.0",
-  "description": "node.jsとwebsocketでもう少しいろいろと",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,5 +11,17 @@
   "dependencies": {
     "glob": "^10.2.6",
     "websocket": "^1.0.34"
-  }
+  },
+  "directories": {
+    "doc": "doc"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morimoto-hiroshi/node-websocket-note.git"
+  },
+  "bugs": {
+    "url": "https://github.com/morimoto-hiroshi/node-websocket-note/issues"
+  },
+  "homepage": "https://github.com/morimoto-hiroshi/node-websocket-note#readme"
 }
