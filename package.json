@@ -1,0 +1,16 @@
+{
+  "name": "websocket-ex",
+  "version": "1.0.0",
+  "description": "node.jsとwebsocketでもう少しいろいろと",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^10.2.6",
+    "websocket": "^1.0.34"
+  }
+}
