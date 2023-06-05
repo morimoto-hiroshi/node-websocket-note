@@ -20,7 +20,7 @@ http://localhost:3000 または サーバーコンソールに表示されたURL
 ・編集状況は随時サーバーに保存され、リロードや新規クライアントからの接続時に状況再現。
 ・ChromeとSafariで動いている。
 
-![pc](doc/img/pc.png "pc")
-![sp](doc/img/sp.jpeg "sp")
+<img src="doc/img/pc.png" width="600">
+<img src="doc/img/sp.jpeg" width="300">
 
 [Post it icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/post-it)
