@@ -14,7 +14,7 @@ const DATA_DIR = '.data'; //データ保存ディレクトリ
 
 //httpサーバーのrequestハンドラ
 const g_httpServer = http.createServer((request, response) => {
-    var url = request.url;
+    let url = request.url;
     if (url == '/') {
         url = '/index.html';
     }

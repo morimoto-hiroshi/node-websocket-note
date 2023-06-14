@@ -37,7 +37,7 @@ g_websocket.onopen = function () {
 
 g_websocket.onmessage = function ( {data:json}) {
     console.log('message: ' + json);
-    var data = JSON.parse(json);
+    let data = JSON.parse(json);
     switch (data.cmd) {
         case 'info':
             g_sessionId = data.sessionId;
@@ -63,7 +63,7 @@ g_websocket.onclose = function () {
 
 //add,drag,updateコマンドの処理
 function onAddDragUpdate(data) {
-    var div = document.getElementById(data.unit.unitId);
+    let div = document.getElementById(data.unit.unitId);
     if (!div) {
         //ロード時の既存データ受信か、または自セッションからaddした場合。ここでdiv生成する。
         div = document.createElement('div');
