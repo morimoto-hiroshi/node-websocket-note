@@ -12,6 +12,11 @@ const PORT = 3000; //httpサーバーのポート
 const PROTOCOL = 'note'; //WebSocketのプロトコル識別子
 const DATA_DIR = '.data'; //データ保存ディレクトリ
 
+//初期化
+if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, {recursive: true});
+}
+
 //httpサーバーのrequestハンドラ
 const g_httpServer = http.createServer((request, response) => {
     let url = request.url;
@@ -122,21 +127,16 @@ function onAccept(connection) {
     });
     connection.sendUTF(json); //送信元だけに送る
     //既存データを送る
-    if (fs.existsSync(DATA_DIR)) {
-        fs.readdirSync(DATA_DIR).filter(path => path.match(/\.json$/)).forEach(path => {
-            const json = fs.readFileSync(`${DATA_DIR}/${path}`, 'utf8');
-            connection.sendUTF(json); //送信元だけに送る
-        });
-    }
+    fs.readdirSync(DATA_DIR).filter(path => path.match(/\.json$/)).forEach(path => {
+        const json = fs.readFileSync(`${DATA_DIR}/${path}`, 'utf8');
+        connection.sendUTF(json); //送信元だけに送る
+    });
 }
 
 //add,drag,updateコマンドの処理
 function onAddDragUpdate(data) {
     const json = JSON.stringify(data);
     const jsonPath = `${DATA_DIR}/${data.unit.unitId}.json`;
-    if (!fs.existsSync(DATA_DIR)) {
-        fs.mkdirSync(DATA_DIR, {recursive: true});
-    }
     if (data.cmd != 'drag') { //dragはファイル保存しない
         fs.writeFile(jsonPath, json, (err) => {
             if (err) {
