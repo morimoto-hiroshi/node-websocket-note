@@ -9,6 +9,7 @@ function setDraggable(ele, onmove, onend) {
     //開始イベントハンドラを設定
     ele.addEventListener('mousedown', onStart);
     ele.addEventListener('touchstart', onStart);
+    ele.style.cursor = 'move';
 
     //ドラッグ開始イベントハンドラ
     function onStart(e) {
