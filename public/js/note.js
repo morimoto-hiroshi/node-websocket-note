@@ -4,8 +4,8 @@ const PROTOCOL = 'note';
 
 //グローバル変数
 const g_websocket = new WebSocket(URL, PROTOCOL);
-var g_focusOutFlag = false;
-var g_sessionId; //セッション識別子
+let g_focusOutFlag = false;
+let g_sessionId; //セッション識別子
 
 //ロード時の初期化処理
 window.onload = function () {
