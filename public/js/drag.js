@@ -30,7 +30,7 @@ function setDraggable(ele, onmove, onend) {
     //ドラッグ移動イベントハンドラ
     function onMove(e) {
         m_moved = true;
-        let drag = document.getElementsByClassName('drag')[0];
+        const drag = document.getElementsByClassName('drag')[0];
         e.preventDefault();
         const pos = getCornerPos(e);
         drag.style.left = pos.x + 'px';
@@ -42,7 +42,7 @@ function setDraggable(ele, onmove, onend) {
 
     //ドラッグ終了イベントハンドラ
     function onEnd(e) {
-        let drag = document.getElementsByClassName('drag')[0];
+        const drag = document.getElementsByClassName('drag')[0];
         //イベントハンドラを撤去
         document.body.removeEventListener('mousemove', onMove);
         document.body.removeEventListener('touchmove', onMove);
