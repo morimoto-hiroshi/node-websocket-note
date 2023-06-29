@@ -1,4 +1,4 @@
-# node-websocket-ex
+# node-websocket-note
 
 node.jsとwebsocketで共有ノート的なものに必要な仕組みを確認
 
