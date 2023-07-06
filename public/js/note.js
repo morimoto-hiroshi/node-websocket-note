@@ -7,7 +7,9 @@ const g_websocket = new WebSocket(URL, PROTOCOL);
 let g_focusOutFlag = false;
 let g_sessionId; //セッション識別子
 
-//ロード時の初期化処理
+/**
+ * ロード時の初期化処理
+ */
 window.onload = function () {
     //背景クリックで新規追加
     document.body.addEventListener('click', (e) => {
@@ -61,7 +63,9 @@ g_websocket.onclose = function () {
     console.log('close');
 }
 
-//add,drag,updateコマンドの処理
+/**
+ * add,drag,updateコマンドの処理
+ */
 function onAddDragUpdate(data) {
     let div = document.getElementById(data.unit.unitId);
     if (!div) {

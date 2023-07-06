@@ -116,7 +116,9 @@ g_websocketServer.on('request', (request) => {
     });
 });
 
-//コネクション確立時の処理
+/**
+ * コネクション確立時の処理
+ */
 function onAccept(connection) {
     const sessionId = `${connection.socket._peername.address}:${connection.socket._peername.port}:${new Date().getTime()}`;
     console.log(`${new Date()} acceepted: ${sessionId}`);
@@ -133,7 +135,9 @@ function onAccept(connection) {
     });
 }
 
-//add,drag,updateコマンドの処理
+/**
+ * add,drag,updateコマンドの処理
+ */
 function onAddDragUpdate(data) {
     const json = JSON.stringify(data);
     const jsonPath = `${DATA_DIR}/${data.unit.unitId}.json`;
@@ -147,7 +151,9 @@ function onAddDragUpdate(data) {
     g_websocketServer.broadcast(json); //全端末に送る
 }
 
-//deleteコマンドの処理
+/**
+ * deleteコマンドの処理
+ */
 function onDelete(data) {
     const json = JSON.stringify(data);
     const jsonPath = `${DATA_DIR}/${data.unit.unitId}.json`;
