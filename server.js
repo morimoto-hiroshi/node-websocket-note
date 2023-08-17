@@ -18,14 +18,14 @@ if (!fs.existsSync(DATA_DIR)) {
 }
 
 //httpサーバーのrequestハンドラ
-const g_httpServer = http.createServer((request, response) => {
-    let url = request.url;
+const g_httpServer = http.createServer((req, res) => {
+    let url = req.url;
     if (url == '/') {
         url = '/index.html';
     }
     if (url.indexOf('..') != -1) {
-        response.writeHead(403);
-        response.end();
+        res.writeHead(403);
+        res.end();
         return;
     }
     const patterns = [
@@ -35,8 +35,8 @@ const g_httpServer = http.createServer((request, response) => {
         '^/img/.+\\.(ico|png|jpg|gif)$'
     ];
     if (patterns.filter(pat => url.match(pat)).length <= 0) {
-        response.writeHead(404);
-        response.end();
+        res.writeHead(404);
+        res.end();
         return;
     }
     const types = {
@@ -57,9 +57,9 @@ const g_httpServer = http.createServer((request, response) => {
         if (err) {
             console.log(`${new Date()} readFile error: ${err}`);
         } else {
-            response.writeHead(200, headers);
-            response.write(data);
-            response.end();
+            res.writeHead(200, headers);
+            res.write(data);
+            res.end();
         }
     });
 })
@@ -76,17 +76,17 @@ const g_websocketServer = new websocketServer({
 });
 
 //WebSocketサーバーのrequestハンドラ
-g_websocketServer.on('request', (request) => {
+g_websocketServer.on('request', (req) => {
     //originの検査
-    console.log(`${new Date()} check origin: ${request.origin}`);
-    if (request.origin !== `http://localhost:${PORT}` && request.origin !== `http://${ADDRESS}:${PORT}`) {
-        request.reject();
-        console.log(`${new Date()} REJECTED: ${request.origin}`);
+    console.log(`${new Date()} check origin: ${req.origin}`);
+    if (req.origin !== `http://localhost:${PORT}` && req.origin !== `http://${ADDRESS}:${PORT}`) {
+        req.reject();
+        console.log(`${new Date()} REJECTED: ${req.origin}`);
         return;
     }
 
     //コネクション確立とイベントハンドラ
-    const connection = request.accept(PROTOCOL, request.origin);
+    const connection = req.accept(PROTOCOL, req.origin);
     onAccept(connection);
     connection.on('message', message => {
         switch (message.type) {
